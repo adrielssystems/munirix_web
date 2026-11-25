@@ -8,8 +8,7 @@ node_modules/
 out/
 
 # Environment variables
-.env*.local
-.env
+.env*
 
 # Scratch and temporary folders
 scratch/
