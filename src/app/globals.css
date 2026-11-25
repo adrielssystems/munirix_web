@@ -1,0 +1,97 @@
+:root {
+  /* Munirix Official Brand Palette — extracted from Munirix by Adriel's Systems */
+  --munirix-void: #07090e;
+  --munirix-surface: #0d121b;
+  --munirix-elevated: #121926;
+  --munirix-steel-border: rgba(154, 176, 201, 0.14);
+  --munirix-steel-strong: rgba(154, 176, 201, 0.28);
+  --munirix-ink: #f2f6fc;
+  --munirix-steel: #9ab0c9;
+  --munirix-muted: #64768d;
+  --munirix-indigo: #7b6bf2;
+  --munirix-cyan: #38c6ec;
+
+  /* Compatibility tokens */
+  --bg-canvas: var(--munirix-void);
+  --bg-main: var(--munirix-void);
+  --bg-surface: var(--munirix-surface);
+  --bg-card: var(--munirix-surface);
+  --bg-elevated: var(--munirix-elevated);
+  --border-hairline: var(--munirix-steel-border);
+  --border-strong: var(--munirix-steel-strong);
+  --text-primary: var(--munirix-ink);
+  --text-secondary: var(--munirix-steel);
+  --text-muted: var(--munirix-muted);
+  --accent-primary: var(--munirix-indigo);
+  --accent-cyan: var(--munirix-cyan);
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --font-sans: 'Inter';
+  --font-display: 'Space Grotesk';
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  background-color: var(--munirix-void);
+  color: var(--munirix-ink);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color-scheme: dark;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+  letter-spacing: -0.025em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+::selection {
+  background: rgba(56, 198, 236, 0.28);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--munirix-cyan);
+  outline-offset: 2px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--munirix-void);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(154, 176, 201, 0.2);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(154, 176, 201, 0.36);
+}

@@ -1,0 +1,17 @@
+{
+  "name": "munirix_web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000"
+  },
+  "dependencies": {
+    "lucide-react": "^1.79.0",
+    "motion": "^14.14.0",
+    "next": "^15.5.29",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}

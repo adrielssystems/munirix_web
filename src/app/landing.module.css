@@ -1,0 +1,775 @@
+.page {
+  position: relative;
+  min-height: 100vh;
+  background: var(--munirix-void);
+  color: var(--munirix-ink);
+  overflow-x: hidden;
+}
+
+/* Rayo luminoso SoftAurora calibrado a Munirix (#7B6BF2 -> #38C6EC) */
+.auroraWrap {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.88;
+}
+
+/* Header */
+.navWrap {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(7, 9, 14, 0.72);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--munirix-steel-border);
+}
+
+.nav {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0.55rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.brandIconImg {
+  width: auto;
+  height: 96px;
+  object-fit: contain;
+  display: block;
+}
+
+.brandName {
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--munirix-ink);
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  font-size: 0.875rem;
+  color: var(--munirix-steel);
+}
+
+.navLinks a {
+  transition: color 150ms ease;
+}
+
+.navLinks a:hover {
+  color: var(--munirix-ink);
+}
+
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ghostLink {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--munirix-steel);
+  transition: color 150ms ease;
+}
+
+.ghostLink:hover {
+  color: var(--munirix-ink);
+}
+
+.primaryCta,
+.primaryCtaLg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  border-radius: 9999px;
+  background: var(--munirix-ink);
+  color: var(--munirix-void);
+  font-weight: 600;
+  transition: transform 140ms var(--ease-out), background-color 150ms ease;
+}
+
+.primaryCta {
+  padding: 0.48rem 1.05rem;
+  font-size: 0.85rem;
+}
+
+.primaryCtaLg {
+  padding: 0.82rem 1.55rem;
+  font-size: 0.94rem;
+}
+
+.primaryCta:hover,
+.primaryCtaLg:hover {
+  background: #dde8f5;
+}
+
+.primaryCta:active,
+.primaryCtaLg:active {
+  transform: scale(0.97);
+}
+
+.secondaryCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.82rem 1.4rem;
+  border-radius: 9999px;
+  border: 1px solid var(--munirix-steel-strong);
+  background: rgba(13, 18, 27, 0.72);
+  color: var(--munirix-ink);
+  font-size: 0.94rem;
+  font-weight: 600;
+  transition: transform 140ms var(--ease-out), border-color 150ms ease, background-color 150ms ease;
+}
+
+.secondaryCta:hover {
+  border-color: rgba(56, 198, 236, 0.5);
+  background: rgba(18, 25, 38, 0.9);
+}
+
+.secondaryCta:active {
+  transform: scale(0.97);
+}
+
+/* Main Layout */
+.main {
+  position: relative;
+  z-index: 2;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 4.5rem 1.5rem 5.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+/* Hero */
+.hero {
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heroTitle {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(2.4rem, 5.2vw, 4.1rem);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  color: var(--munirix-ink);
+  text-wrap: balance;
+  margin-bottom: 1.25rem;
+}
+
+.heroSubtitle {
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+  line-height: 1.62;
+  color: #c2d3e6;
+  max-width: 60ch;
+  text-wrap: pretty;
+  margin-bottom: 2.1rem;
+}
+
+.heroButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
+}
+
+/* Consola de demostración: una única superficie arquitectónica con líneas hairline */
+.consoleSection {
+  width: 100%;
+}
+
+.consoleFrame {
+  border-radius: 16px;
+  border: 1px solid var(--munirix-steel-border);
+  background: rgba(11, 15, 23, 0.86);
+  backdrop-filter: blur(18px);
+  overflow: hidden;
+}
+
+.consoleTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--munirix-steel-border);
+}
+
+.tabBar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.tabBtn {
+  position: relative;
+  border: 0;
+  background: transparent;
+  color: var(--munirix-steel);
+  padding: 0.48rem 0.9rem;
+  border-radius: 9999px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 150ms ease, transform 130ms var(--ease-out);
+}
+
+.tabBtn:hover {
+  color: var(--munirix-ink);
+}
+
+.tabBtn:active {
+  transform: scale(0.97);
+}
+
+.tabBtnActive,
+.tabBtnActive:hover {
+  color: var(--munirix-void);
+}
+
+.tabIndicator {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: var(--munirix-ink);
+  z-index: 0;
+}
+
+.tabInner {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.consoleMeta {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.consoleContext {
+  font-size: 0.8rem;
+  color: var(--munirix-muted);
+}
+
+.replayBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.38rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid var(--munirix-steel-border);
+  background: transparent;
+  color: var(--munirix-steel);
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 150ms ease, border-color 150ms ease, transform 130ms var(--ease-out);
+}
+
+.replayBtn:hover {
+  color: var(--munirix-ink);
+  border-color: var(--munirix-steel-strong);
+}
+
+.replayBtn:active {
+  transform: scale(0.96);
+}
+
+.consoleBody {
+  min-height: 270px;
+}
+
+.consoleSplit {
+  display: grid;
+  grid-template-columns: 1.28fr 1fr;
+}
+
+.dialogueColumn {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--munirix-steel-border);
+}
+
+.dialogueEntry,
+.dialogueReply {
+  padding: 1.5rem 1.65rem;
+}
+
+.dialogueEntry {
+  border-bottom: 1px solid var(--munirix-steel-border);
+}
+
+.dialogueReply {
+  background: rgba(56, 198, 236, 0.035);
+  flex: 1;
+}
+
+.speakerName {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--munirix-muted);
+  margin-bottom: 0.45rem;
+}
+
+.speakerMessage {
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: var(--munirix-steel);
+}
+
+.munirixSpeaker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--munirix-cyan);
+  margin-bottom: 0.55rem;
+}
+
+.miniEmblem {
+  width: auto;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+}
+
+.replyMessage {
+  font-size: 0.96rem;
+  line-height: 1.62;
+  color: var(--munirix-ink);
+}
+
+.ledgerColumn {
+  padding: 1.5rem 1.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.ledgerHeading {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--munirix-muted);
+}
+
+.ledgerList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.ledgerRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--munirix-steel-border);
+  font-size: 0.88rem;
+  line-height: 1.48;
+  color: #d6e3f2;
+}
+
+.ledgerRow:first-child {
+  border-top: 0;
+  padding-top: 0.15rem;
+}
+
+.ledgerIcon {
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+  color: var(--munirix-cyan);
+}
+
+/* Secciones */
+.sectionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.sectionHeader {
+  max-width: 640px;
+}
+
+.sectionHeader h2 {
+  font-size: clamp(1.7rem, 3vw, 2.35rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--munirix-ink);
+  margin-bottom: 0.6rem;
+}
+
+.sectionHeader p {
+  font-size: 0.98rem;
+  line-height: 1.62;
+  color: var(--munirix-steel);
+}
+
+/* Cuadrícula arquitectónica de integraciones — monocroma acero + acento Munirix al hover */
+.toolsMatrix {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--munirix-steel-border);
+  border-left: 1px solid var(--munirix-steel-border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(11, 15, 23, 0.72);
+}
+
+.toolCell {
+  padding: 1.5rem;
+  border-right: 1px solid var(--munirix-steel-border);
+  border-bottom: 1px solid var(--munirix-steel-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  transition: background-color 160ms ease;
+}
+
+.toolCell:hover {
+  background: rgba(56, 198, 236, 0.045);
+}
+
+.toolIcon {
+  color: var(--munirix-steel);
+  margin-bottom: 0.25rem;
+  transition: color 160ms ease;
+}
+
+.toolCell:hover .toolIcon {
+  color: var(--munirix-cyan);
+}
+
+.toolCell h3 {
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: var(--munirix-ink);
+}
+
+.toolCell p {
+  font-size: 0.83rem;
+  line-height: 1.48;
+  color: var(--munirix-muted);
+}
+
+/* Personal vs Empresarial */
+.splitColumns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid var(--munirix-steel-border);
+  border-bottom: 1px solid var(--munirix-steel-border);
+  background: rgba(11, 15, 23, 0.66);
+}
+
+.splitCol {
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.splitCol:first-child {
+  border-right: 1px solid var(--munirix-steel-border);
+}
+
+.splitCol h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--munirix-ink);
+}
+
+.splitIntro {
+  font-size: 0.93rem;
+  line-height: 1.62;
+  color: var(--munirix-steel);
+  max-width: 48ch;
+}
+
+.cleanList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+}
+
+.cleanList li {
+  position: relative;
+  padding-left: 1.15rem;
+  font-size: 0.9rem;
+  line-height: 1.52;
+  color: #d6e3f2;
+}
+
+.cleanList li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.58em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--munirix-cyan);
+}
+
+/* 3 pasos */
+.stepsRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.25rem;
+  border-top: 1px solid var(--munirix-steel-border);
+  padding-top: 2rem;
+}
+
+.stepCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.stepIndex {
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--munirix-cyan);
+}
+
+.stepCol h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--munirix-ink);
+}
+
+.stepCol p {
+  font-size: 0.9rem;
+  line-height: 1.62;
+  color: var(--munirix-steel);
+}
+
+/* Franja de confianza */
+.guaranteeBar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  padding: 1.4rem 0;
+  border-top: 1px solid var(--munirix-steel-border);
+  border-bottom: 1px solid var(--munirix-steel-border);
+}
+
+.guaranteeItem {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: var(--munirix-steel);
+}
+
+.guaranteeIcon {
+  flex-shrink: 0;
+  color: var(--munirix-cyan);
+}
+
+/* FAQ sin cajas pesadas */
+.faqList {
+  max-width: 780px;
+  border-top: 1px solid var(--munirix-steel-border);
+}
+
+.faqRow {
+  border-bottom: 1px solid var(--munirix-steel-border);
+}
+
+.faqTrigger {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--munirix-ink);
+  padding: 1.25rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  text-align: left;
+  font-size: 0.98rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 150ms ease;
+}
+
+.faqTrigger:hover {
+  color: var(--munirix-cyan);
+}
+
+.faqChevron {
+  flex-shrink: 0;
+  color: var(--munirix-steel);
+  transition: transform 200ms var(--ease-out), color 150ms ease;
+}
+
+.faqChevronOpen {
+  transform: rotate(180deg);
+  color: var(--munirix-cyan);
+}
+
+.faqAnswer {
+  padding: 0 0 1.35rem;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--munirix-steel);
+  max-width: 66ch;
+}
+
+/* Cierre con logotipo oficial Munirix */
+.closingBlock {
+  padding: 3.5rem 1.5rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.closingLogo {
+  width: 148px;
+  height: auto;
+  object-fit: contain;
+  user-select: none;
+}
+
+.closingSignature {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--munirix-steel);
+  margin-bottom: 0.35rem;
+}
+
+.closingBlock h2 {
+  font-size: clamp(1.75rem, 3.2vw, 2.45rem);
+  font-weight: 700;
+  color: var(--munirix-ink);
+}
+
+.closingBlock p {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--munirix-steel);
+  max-width: 50ch;
+  margin-bottom: 0.45rem;
+}
+
+/* Footer */
+.footer {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid var(--munirix-steel-border);
+  background: rgba(7, 9, 14, 0.88);
+}
+
+.footerInner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.84rem;
+  color: var(--munirix-muted);
+}
+
+.footerBrand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  color: var(--munirix-steel);
+}
+
+.footerIcon {
+  width: auto;
+  height: 72px;
+  object-fit: contain;
+  display: block;
+}
+
+.footerLinks {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footerLinks a {
+  color: var(--munirix-steel);
+  transition: color 150ms ease;
+}
+
+.footerLinks a:hover {
+  color: var(--munirix-ink);
+}
+
+@media (max-width: 960px) {
+  .toolsMatrix {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .consoleSplit,
+  .splitColumns,
+  .stepsRow,
+  .guaranteeBar {
+    grid-template-columns: 1fr;
+  }
+
+  .dialogueColumn,
+  .splitCol:first-child {
+    border-right: 0;
+    border-bottom: 1px solid var(--munirix-steel-border);
+  }
+
+  .navLinks {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .toolsMatrix {
+    grid-template-columns: 1fr;
+  }
+
+  .main {
+    padding-top: 3rem;
+    gap: 4.25rem;
+  }
+}

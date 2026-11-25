@@ -1,0 +1,19 @@
+services:
+  munirix_web:
+    build: .
+    container_name: munirix_web
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.local
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+    networks:
+      - munirix_net
+
+networks:
+  munirix_net:
+    name: munirix_net
+    driver: bridge
