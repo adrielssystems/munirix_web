@@ -3,6 +3,10 @@
 import { useState } from 'react';
 import { motion, AnimatePresence, MotionConfig } from 'motion/react';
 import SoftAurora from '@/components/ui/SoftAurora';
+import BlurText from '@/components/ui/BlurText';
+import ShinyText from '@/components/ui/ShinyText';
+import RotatingText from '@/components/ui/RotatingText';
+import DecryptedText from '@/components/ui/DecryptedText';
 import {
   ArrowRight,
   Briefcase,
@@ -254,14 +258,38 @@ export default function MunirixExperience({ clientUrl }) {
         <main className={styles.main}>
           {/* HERO */}
           <section className={styles.hero}>
-            <motion.h1
-              className={styles.heroTitle}
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: EASE_OUT }}
-            >
-              Tus agentes de IA personales y empresariales, listos en minutos.
-            </motion.h1>
+            <div className={styles.heroEyebrow}>
+              <ShinyText
+                text="WhatsApp · Google Workspace · Multi-LLM"
+                color="#7d90a8"
+                shineColor="#38C6EC"
+                speed={2.8}
+                shineWidth={42}
+              />
+            </div>
+
+            <h1 className={styles.heroTitle}>
+              <BlurText
+                text="Tus agentes de IA"
+                animateBy="words"
+                direction="bottom"
+                delay={55}
+              />
+              <span className={styles.heroRotatingWrap}>
+                <RotatingText
+                  texts={[
+                    'para tu negocio',
+                    'para tu agenda personal',
+                    'para tus citas y clientes',
+                    'listos en minutos',
+                  ]}
+                  effect="blur"
+                  rotationInterval={2600}
+                  staggerDuration={0.02}
+                  mainClassName={styles.heroRotatingText}
+                />
+              </span>
+            </h1>
 
             <motion.p
               className={styles.heroSubtitle}
@@ -437,7 +465,16 @@ export default function MunirixExperience({ clientUrl }) {
           {/* INTEGRACIONES — Cuadrícula arquitectónica monocroma en acero y cian Munirix (sin arcoíris) */}
           <section id="herramientas" className={styles.sectionBlock}>
             <div className={styles.sectionHeader}>
-              <h2>Conecta tus herramientas del día a día</h2>
+              <h2>
+                <DecryptedText
+                  text="Conecta tus herramientas del día a día"
+                  animateOn="view"
+                  sequential
+                  speed={26}
+                  maxIterations={8}
+                  scrambleColor="#38C6EC"
+                />
+              </h2>
               <p>
                 Sin cambiar de aplicaciones ni atarte a un solo proveedor de inteligencia artificial.
               </p>
@@ -498,7 +535,16 @@ export default function MunirixExperience({ clientUrl }) {
           {/* CÓMO FUNCIONA EN 3 PASOS */}
           <section id="como-funciona" className={styles.sectionBlock}>
             <div className={styles.sectionHeader}>
-              <h2>Operando en tres pasos simples</h2>
+              <h2>
+                <DecryptedText
+                  text="Operando en tres pasos simples"
+                  animateOn="view"
+                  sequential
+                  speed={26}
+                  maxIterations={8}
+                  scrambleColor="#38C6EC"
+                />
+              </h2>
             </div>
 
             <div className={styles.stepsRow}>
@@ -531,7 +577,16 @@ export default function MunirixExperience({ clientUrl }) {
           {/* PLANES Y PRECIOS */}
           <section id="planes" className={styles.sectionBlock}>
             <div className={styles.sectionHeader}>
-              <h2>Planes simples, sin costos ocultos</h2>
+              <h2>
+                <DecryptedText
+                  text="Planes simples, sin costos ocultos"
+                  animateOn="view"
+                  sequential
+                  speed={26}
+                  maxIterations={8}
+                  scrambleColor="#38C6EC"
+                />
+              </h2>
               <p>
                 Elige el plan ideal para tu negocio o uso personal. Activa tu espacio al certificar tu pago.
               </p>
@@ -546,7 +601,16 @@ export default function MunirixExperience({ clientUrl }) {
                   <div className={styles.pricingTop}>
                     <div className={styles.pricingHeaderRow}>
                       <h3>{plan.name}</h3>
-                      {plan.badge && <span className={styles.pricingBadge}>{plan.badge}</span>}
+                      {plan.badge && (
+                        <span className={styles.pricingBadge}>
+                          <ShinyText
+                            text={plan.badge}
+                            color="#38C6EC"
+                            shineColor="#ffffff"
+                            speed={2.2}
+                          />
+                        </span>
+                      )}
                     </div>
                     <div className={styles.pricingPriceRow}>
                       <span className={styles.pricingCurrency}>$</span>

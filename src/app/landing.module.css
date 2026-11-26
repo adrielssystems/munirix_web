@@ -168,15 +168,39 @@
   align-items: center;
 }
 
+.heroEyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
+}
+
 .heroTitle {
   font-family: var(--font-display), sans-serif;
   font-size: clamp(2.4rem, 5.2vw, 4.1rem);
   font-weight: 700;
-  line-height: 1.06;
+  line-height: 1.08;
   letter-spacing: -0.03em;
   color: var(--munirix-ink);
   text-wrap: balance;
   margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.16em;
+}
+
+.heroRotatingWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.2em;
+}
+
+.heroRotatingText {
+  color: var(--munirix-cyan);
+  justify-content: center;
 }
 
 .heroSubtitle {
