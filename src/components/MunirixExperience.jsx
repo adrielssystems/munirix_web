@@ -468,11 +468,13 @@ export default function MunirixExperience({ clientUrl }) {
               <h2>
                 <DecryptedText
                   text="Conecta tus herramientas del día a día"
-                  animateOn="view"
+                  animateOn="inViewHover"
                   sequential
                   speed={26}
                   maxIterations={8}
                   scrambleColor="#38C6EC"
+                  loop
+                  loopDelay={4500}
                 />
               </h2>
               <p>
@@ -497,7 +499,18 @@ export default function MunirixExperience({ clientUrl }) {
           {/* PERSONAL VS EMPRESARIAL — División limpia con línea central de acero */}
           <section id="alcance" className={styles.sectionBlock}>
             <div className={styles.sectionHeader}>
-              <h2>Para tu rutina diaria o para toda tu operación</h2>
+              <h2>
+                <DecryptedText
+                  text="Para tu rutina diaria o para toda tu operación"
+                  animateOn="inViewHover"
+                  sequential
+                  speed={26}
+                  maxIterations={8}
+                  scrambleColor="#38C6EC"
+                  loop
+                  loopDelay={5000}
+                />
+              </h2>
               <p>
                 Empieza con un asistente personal en tu teléfono y activa módulos empresariales cuando tu negocio crezca.
               </p>
@@ -538,11 +551,13 @@ export default function MunirixExperience({ clientUrl }) {
               <h2>
                 <DecryptedText
                   text="Operando en tres pasos simples"
-                  animateOn="view"
+                  animateOn="inViewHover"
                   sequential
                   speed={26}
                   maxIterations={8}
                   scrambleColor="#38C6EC"
+                  loop
+                  loopDelay={4500}
                 />
               </h2>
             </div>
@@ -580,11 +595,13 @@ export default function MunirixExperience({ clientUrl }) {
               <h2>
                 <DecryptedText
                   text="Planes simples, sin costos ocultos"
-                  animateOn="view"
+                  animateOn="inViewHover"
                   sequential
                   speed={26}
                   maxIterations={8}
                   scrambleColor="#38C6EC"
+                  loop
+                  loopDelay={4500}
                 />
               </h2>
               <p>
@@ -654,7 +671,18 @@ export default function MunirixExperience({ clientUrl }) {
           {/* PREGUNTAS FRECUENTES */}
           <section id="faq" className={styles.sectionBlock}>
             <div className={styles.sectionHeader}>
-              <h2>Preguntas frecuentes</h2>
+              <h2>
+                <DecryptedText
+                  text="Preguntas frecuentes"
+                  animateOn="inViewHover"
+                  sequential
+                  speed={26}
+                  maxIterations={8}
+                  scrambleColor="#38C6EC"
+                  loop
+                  loopDelay={5000}
+                />
+              </h2>
             </div>
 
             <div className={styles.faqList}>
