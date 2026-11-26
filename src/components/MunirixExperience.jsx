@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence, MotionConfig } from 'motion/react';
 import SoftAurora from '@/components/ui/SoftAurora';
 import BlurText from '@/components/ui/BlurText';
@@ -752,6 +753,9 @@ export default function MunirixExperience({ clientUrl }) {
               <span>Munirix · munirix.net</span>
             </div>
             <div className={styles.footerLinks}>
+              <Link href="/privacidad">Privacidad</Link>
+              <Link href="/terminos">Términos de uso</Link>
+              <Link href="/seguridad">Seguridad</Link>
               <a href={`${clientUrl}/login`}>Iniciar sesión</a>
               <a href={`${clientUrl}/register`}>Crear cuenta</a>
             </div>
