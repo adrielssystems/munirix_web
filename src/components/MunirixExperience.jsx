@@ -7,19 +7,22 @@ import {
   ArrowRight,
   Briefcase,
   CalendarDays,
+  CheckCheck,
   ChevronDown,
   Cpu,
   FileSpreadsheet,
   FolderKanban,
   HardDrive,
-  HeartPulse,
   Mail,
   MessageCircle,
+  Mic,
   PauseCircle,
   Play,
   QrCode,
   RotateCw,
   ShieldCheck,
+  Smile,
+  Store,
   User,
   Zap,
 } from 'lucide-react';
@@ -33,8 +36,11 @@ const AGENT_SCENES = [
     id: 'personal',
     label: 'Agente Personal',
     icon: User,
+    waTitle: 'Munirix · Tu Asistente',
+    waStatus: 'en línea',
     context: 'WhatsApp · Google Calendar · Gmail',
-    promptAuthor: 'Tú en WhatsApp',
+    promptTime: '10:41',
+    replyTime: '10:41',
     prompt:
       'Munirix, revisa mi agenda del jueves, bloquea dos horas en la tarde para preparar la presentación y avísale por correo a Carlos que nos vemos el viernes a las 10:00.',
     reply:
@@ -46,18 +52,21 @@ const AGENT_SCENES = [
     ],
   },
   {
-    id: 'clinic',
-    label: 'Consultorio',
-    icon: HeartPulse,
-    context: 'WhatsApp · Triaje · Agenda · Recordatorios',
-    promptAuthor: 'Paciente en WhatsApp',
+    id: 'services',
+    label: 'Citas & Negocios',
+    icon: Store,
+    waTitle: 'Studio & Reservas · IA',
+    waStatus: 'en línea',
+    context: 'WhatsApp · Catálogo · Agenda · Recordatorios',
+    promptTime: '14:15',
+    replyTime: '14:15',
     prompt:
-      'Hola buenas tardes, quiero agendar una consulta esta semana para revisión de lunares y saber si necesito ir con alguna preparación.',
+      'Hola buenas tardes, quiero agendar una cita para mañana. ¿Qué servicios tienen disponibles y cuánto cuesta la sesión completa?',
     reply:
-      '¡Hola! La revisión de lunares dura 40 minutos; solo te pedimos asistir sin crema con color ni maquillaje en la zona. Tengo espacio mañana a las 10:30 AM o el jueves a las 3:00 PM. ¿Cuál prefieres?',
+      '¡Hola! Con gusto te atiendo. Nuestra Sesión Completa (45 min) tiene un valor de $35. Tengo espacio disponible mañana a las 10:30 AM o a las 3:30 PM. ¿Cuál prefieres reservar?',
     actions: [
-      { icon: HeartPulse, text: 'Identificó motivo y duración (Revisión de lunares · 40 min)' },
-      { icon: CalendarDays, text: 'Cruzó bloques libres con el Google Calendar del consultorio' },
+      { icon: Store, text: 'Consultó tu catálogo de servicios y precios reales' },
+      { icon: CalendarDays, text: 'Verificó horarios libres en tu Google Calendar' },
       { icon: MessageCircle, text: 'Dejó listos los recordatorios automáticos 24h y 2h antes' },
     ],
   },
@@ -65,12 +74,15 @@ const AGENT_SCENES = [
     id: 'business',
     label: 'Empresa & Ventas',
     icon: Briefcase,
+    waTitle: 'Munirix · Ventas CRM',
+    waStatus: 'en línea',
     context: 'WhatsApp · CRM · Google Sheets · Meet',
-    promptAuthor: 'Cliente potencial',
+    promptTime: '16:08',
+    replyTime: '16:08',
     prompt:
       'Hola, somos un equipo de 12 personas y queremos automatizar la atención de clientes y cotizaciones por WhatsApp.',
     reply:
-      'Con gusto te ayudo. Para un equipo de 12 personas puedes conectar varios agentes y activar la API oficial de Meta. Tengo un espacio hoy a las 4:00 PM para mostrarte el flujo en vivo. ¿Te envío el enlace de Meet?',
+      'Con gusto te ayudo. Para un equipo de 12 personas puedes conectar varios agentes y activar la API oficial de Meta. Tengo un espacio hoy a las 4:30 PM para mostrarte el flujo en vivo. ¿Te envío el enlace de Meet?',
     actions: [
       { icon: FolderKanban, text: 'Creó contacto y registró el requerimiento en tu CRM' },
       { icon: FileSpreadsheet, text: 'Añadió la oportunidad en tu hoja de Google Sheets' },
@@ -290,34 +302,61 @@ export default function MunirixExperience({ clientUrl }) {
                     transition={{ duration: 0.22, ease: EASE_OUT }}
                     className={styles.consoleSplit}
                   >
-                    {/* Diálogo limpio separado por una única línea hairline */}
-                    <div className={styles.dialogueColumn}>
-                      <motion.div
-                        className={styles.dialogueEntry}
-                        initial={{ opacity: 0, y: 6 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.2, ease: EASE_OUT }}
-                      >
-                        <span className={styles.speakerName}>{activeScene.promptAuthor}</span>
-                        <p className={styles.speakerMessage}>{activeScene.prompt}</p>
-                      </motion.div>
-
-                      <motion.div
-                        className={styles.dialogueReply}
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.26, delay: 0.28, ease: EASE_OUT }}
-                      >
-                        <div className={styles.munirixSpeaker}>
+                    {/* Ventana estilo chat real de WhatsApp */}
+                    <div className={styles.waPhoneFrame}>
+                      <div className={styles.waHeader}>
+                        <div className={styles.waAvatarWrap}>
                           <img
                             src="/brand/Logo_Munirix_sin_fondo.png"
-                            alt=""
-                            className={styles.miniEmblem}
+                            alt="Munirix"
+                            className={styles.waAvatarImg}
                           />
-                          <span>Munirix</span>
+                          <span className={styles.waOnlineDot} />
                         </div>
-                        <p className={styles.replyMessage}>{activeScene.reply}</p>
-                      </motion.div>
+                        <div className={styles.waHeaderInfo}>
+                          <span className={styles.waHeaderName}>{activeScene.waTitle}</span>
+                          <span className={styles.waHeaderStatus}>{activeScene.waStatus}</span>
+                        </div>
+                        <span className={styles.waBadge}>WhatsApp</span>
+                      </div>
+
+                      <div className={styles.waChatBody}>
+                        <div className={styles.waDatePill}>HOY</div>
+
+                        <motion.div
+                          className={styles.waBubbleOut}
+                          initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          transition={{ duration: 0.22, ease: EASE_OUT }}
+                        >
+                          <p className={styles.waText}>{activeScene.prompt}</p>
+                          <span className={styles.waMeta}>
+                            <span>{activeScene.promptTime}</span>
+                            <CheckCheck size={14} className={styles.waChecks} />
+                          </span>
+                        </motion.div>
+
+                        <motion.div
+                          className={styles.waBubbleIn}
+                          initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          transition={{ duration: 0.28, delay: 0.28, ease: EASE_OUT }}
+                        >
+                          <span className={styles.waSenderLabel}>Munirix IA</span>
+                          <p className={styles.waText}>{activeScene.reply}</p>
+                          <span className={styles.waMeta}>
+                            <span>{activeScene.replyTime}</span>
+                          </span>
+                        </motion.div>
+                      </div>
+
+                      <div className={styles.waInputBar} aria-hidden="true">
+                        <Smile size={17} className={styles.waInputIcon} />
+                        <span className={styles.waInputPlaceholder}>Escribe un mensaje...</span>
+                        <span className={styles.waMicBtn}>
+                          <Mic size={15} />
+                        </span>
+                      </div>
                     </div>
 
                     {/* Acciones ejecutadas: lista limpia sin tarjetas anidadas */}
