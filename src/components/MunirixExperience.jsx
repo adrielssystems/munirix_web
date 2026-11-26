@@ -171,6 +171,10 @@ const PLANS = [
 
 const FAQS = [
   {
+    q: '¿Qué pasa cuando terminan mis 3 días de prueba gratuita?',
+    a: 'No pedimos tarjeta de crédito ni hacemos cobros automáticos. Al cumplirse las 72 horas, tu agente se pausa; si decides continuar, reportas tu pago (PayPal, Binance Pay, Zelle o Pago Móvil) y conservas toda tu configuración y chats. Si prefieres no seguir, no pagas nada.',
+  },
+  {
     q: '¿Necesito saber programar para configurar mi agente?',
     a: 'No. Todo se configura desde tu panel: escribes las instrucciones en español cotidiano, eliges el modelo de IA y conectas WhatsApp y Google paso a paso.',
   },
@@ -310,7 +314,7 @@ export default function MunirixExperience({ clientUrl }) {
               transition={{ duration: 0.4, delay: 0.14, ease: EASE_OUT }}
             >
               <a href={`${clientUrl}/register`} className={styles.primaryCtaLg}>
-                <span>Crear mi primer agente</span>
+                <span>Probar 3 días gratis</span>
                 <ArrowRight size={17} strokeWidth={1.75} />
               </a>
               <a href="#demo" className={styles.secondaryCta}>
@@ -318,6 +322,9 @@ export default function MunirixExperience({ clientUrl }) {
                 <span>Ver cómo responde</span>
               </a>
             </motion.div>
+            <p className={styles.heroTrialNote}>
+              3 días de prueba gratis con tu WhatsApp · Sin tarjeta de crédito · Cancela cuando quieras
+            </p>
           </section>
 
           {/* CONSOLA INTERACTIVA DE DEMOSTRACIÓN — Una sola superficie arquitectónica, cero tarjetas anidadas ni KPIs falsos */}
@@ -606,7 +613,14 @@ export default function MunirixExperience({ clientUrl }) {
                 />
               </h2>
               <p>
-                Elige el plan ideal para tu negocio o uso personal. Activa tu espacio al certificar tu pago.
+                Comienza con 3 días gratis sin tarjeta. Al finalizar el plazo, eliges si deseas activar tu plan o no continuar.
+              </p>
+            </div>
+
+            <div className={styles.trialHighlightBar}>
+              <div className={styles.trialHighlightBadge}>PRUEBA GRATUITA 3 DÍAS</div>
+              <p>
+                Configura tu Agente IA en 2 minutos, conéctalo a tu WhatsApp real y pruébalo con tus clientes por <strong>72 horas sin costo</strong>. Sin cobros automáticos al vencer.
               </p>
             </div>
 
@@ -651,7 +665,7 @@ export default function MunirixExperience({ clientUrl }) {
                     href={`${clientUrl}/register?plan=${plan.id}`}
                     className={plan.featured ? styles.pricingCtaFeatured : styles.pricingCta}
                   >
-                    <span>Elegir Plan {plan.name}</span>
+                    <span>Probar 3 días gratis</span>
                     <ArrowRight size={15} />
                   </a>
                 </div>
