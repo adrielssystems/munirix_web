@@ -7,6 +7,7 @@ import {
   ArrowRight,
   Briefcase,
   CalendarDays,
+  Check,
   CheckCheck,
   ChevronDown,
   Cpu,
@@ -117,6 +118,52 @@ const STEPS = [
   },
 ];
 
+const PLANS = [
+  {
+    id: 'profesional',
+    name: 'Profesional',
+    price: 40,
+    subtitle: 'Ideal para profesionales independientes, barberos, consultores o uso personal.',
+    featured: false,
+    features: [
+      '1 número de WhatsApp conectado por QR',
+      'Agente IA 24/7 con Asistente de Configuración',
+      'Google Calendar + enlaces de Meet automáticos',
+      'Recordatorios automáticos de citas',
+      'Hasta 2,000 mensajes de IA al mes',
+    ],
+  },
+  {
+    id: 'negocio',
+    name: 'Negocio',
+    badge: 'Más elegido',
+    price: 70,
+    subtitle: 'Para negocios, clínicas, estéticas y equipos en crecimiento que venden y agendan.',
+    featured: true,
+    features: [
+      'Todo lo del Plan Profesional',
+      'Múltiples asesores en el Inbox compartido',
+      'Google Workspace completo (Sheets, Gmail, Drive)',
+      'Seguimiento post-servicio automático',
+      'Hasta 6,000 mensajes de IA al mes',
+    ],
+  },
+  {
+    id: 'empresa',
+    name: 'Empresa',
+    price: 150,
+    subtitle: 'Operaciones de alto volumen con API oficial de Meta y soporte prioritario.',
+    featured: false,
+    features: [
+      'Todo lo del Plan Negocio',
+      'Conexión con Meta Cloud API Oficial',
+      'Múltiples instancias / números de WhatsApp',
+      'Personalización de módulos e integraciones',
+      'Soporte prioritario y acompañamiento',
+    ],
+  },
+];
+
 const FAQS = [
   {
     q: '¿Necesito saber programar para configurar mi agente?',
@@ -188,7 +235,7 @@ export default function MunirixExperience({ clientUrl }) {
             <nav className={styles.navLinks} aria-label="Navegación principal">
               <a href="#demo">En acción</a>
               <a href="#herramientas">Integraciones</a>
-              <a href="#alcance">Personal y Empresas</a>
+              <a href="#planes">Planes</a>
               <a href="#como-funciona">Cómo funciona</a>
             </nav>
 
@@ -478,6 +525,65 @@ export default function MunirixExperience({ clientUrl }) {
             <div className={styles.guaranteeItem}>
               <QrCode size={17} strokeWidth={1.6} className={styles.guaranteeIcon} />
               <span>Escala de WhatsApp QR a Meta Cloud API Oficial sin perder datos</span>
+            </div>
+          </section>
+
+          {/* PLANES Y PRECIOS */}
+          <section id="planes" className={styles.sectionBlock}>
+            <div className={styles.sectionHeader}>
+              <h2>Planes simples, sin costos ocultos</h2>
+              <p>
+                Elige el plan ideal para tu negocio o uso personal. Activa tu espacio al certificar tu pago.
+              </p>
+            </div>
+
+            <div className={styles.pricingGrid}>
+              {PLANS.map((plan) => (
+                <div
+                  key={plan.id}
+                  className={`${styles.pricingCard} ${plan.featured ? styles.pricingCardFeatured : ''}`}
+                >
+                  <div className={styles.pricingTop}>
+                    <div className={styles.pricingHeaderRow}>
+                      <h3>{plan.name}</h3>
+                      {plan.badge && <span className={styles.pricingBadge}>{plan.badge}</span>}
+                    </div>
+                    <div className={styles.pricingPriceRow}>
+                      <span className={styles.pricingCurrency}>$</span>
+                      <span className={styles.pricingAmount}>{plan.price}</span>
+                      <span className={styles.pricingPeriod}>USD / mes</span>
+                    </div>
+                    <p className={styles.pricingSub}>{plan.subtitle}</p>
+                  </div>
+
+                  <ul className={styles.pricingFeatures}>
+                    {plan.features.map((feat) => (
+                      <li key={feat}>
+                        <Check size={15} className={styles.pricingCheck} />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <a
+                    href={`${clientUrl}/register?plan=${plan.id}`}
+                    className={plan.featured ? styles.pricingCtaFeatured : styles.pricingCta}
+                  >
+                    <span>Elegir Plan {plan.name}</span>
+                    <ArrowRight size={15} />
+                  </a>
+                </div>
+              ))}
+            </div>
+
+            <div className={styles.paymentMethodsBar}>
+              <span>Métodos de pago aceptados:</span>
+              <div className={styles.paymentPills}>
+                <span>PayPal</span>
+                <span>Binance Pay</span>
+                <span>Zelle</span>
+                <span>Pago Móvil</span>
+              </div>
             </div>
           </section>
 
